@@ -1,0 +1,50 @@
+baseURL = 'https://pwnzer0tt1.it/'
+languageCode = "en"
+DefaultContentLanguage = "en"
+enableInlineShortcodes = true
+title = 'Pwnzer0tt1'
+author = "Pwnzer0tt1"
+theme = 'paper'
+
+[params]
+  # color style
+  color = 'linen' # linen, wheat, gray, light
+  description = 'Academic CTF team of Poliba, Always ready to hack and eat panzerotti 🚩'
+  keywords = 'pwnzer0tt1, pwnzer0tt1.it, pwnzer0tt1 writeups, pwnzer0tt1 ctf, pwnzer0tt1 ctf writeups, pwnzer0tt1 ctf team, pwnzer0tt1 ctf'
+  og_image = 'icon.png'
+  # header social icons
+  twitter = 'https://twitter.com/pwnzer0tt1'
+  github = 'https://github.com/pwnzer0tt1'
+  #instagram = 'https://instagram.com/pwnzer0tt1'
+  discord = 'https://discord.gg/79NNVJBK5Z'
+  # home page profile
+  avatar = 'https://pwnzer0tt1.it/icon.png'
+  name = 'Pwnzer0tt1'
+  bio = 'Academic CTF team of Poliba, Always ready to hack and eat panzerotti 🚩'
+  
+  # misc
+  disableHLJS = true # disable highlight.js
+  monoDarkIcon = true  # show monochrome dark mode icon
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    identifier = "posts"
+    name = "Writeups"
+    url = "/posts/"
+    weight = 2
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 10
+
+
+[taxonomies]
+category = "category"
+tag = "tags"
+series = "series"

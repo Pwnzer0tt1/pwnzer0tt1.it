@@ -1,0 +1,24 @@
+<div class="card mr-5 shrink-0 border-[0.5px] border-black/10 p-3 shadow-xl bg-white/80 ">
+    {{ with .Page.Resources.Get (printf "%s" (.Get "img")) }}
+    {{ with .Resize "400x" }}
+    <img class="card-img shadow-xl" src="{{ .RelPermalink }}" alt="{{ $.Get "title" }}" width="{{ .Width }}"
+        height="{{ .Height }}" />
+    {{ end }}
+    {{ end }}
+    <span class="card-text flex justify-center items-center">
+        <div style="padding: 15px 0px;">
+            <b>{{ .Get "title" }}</b>
+            <br />
+            {{ with .Get "description" }}<small>{{ . }}</small><br />{{ end }}
+            {{ with .Get "website" }}<a class="link no-decoration" href='{{ . }}'><small>@www</small></a>{{ end }}
+            {{ with .Get "email" }}<a class="link no-decoration" href='mailto:{{ . }}'><small>@email</small></a>{{ end
+            }}
+            {{ with .Get "telegram" }}<a class="link no-decoration" href='{{ . }}'><small>@telegram</small></a>{{ end }}
+            {{ with .Get "github" }}<a class="link no-decoration" href='{{ . }}'><small>@github</small></a>{{ end }}
+            {{ with .Get "twitter" }}<a class="link no-decoration" href='{{ . }}'><small>@twitter</small></a>{{ end }}
+            {{ with .Get "matrix" }}<a class="link no-decoration" href='{{ . }}'><small>@matrix</small></a>{{ end }}
+            <!-- Se qualcuno mette linkedin ban da Pwnzer0tt1 ❤️ -->
+            {{ with .Get "linkedin" }}<a class="link no-decoration" href='{{ . }}'><small>@ban</small></a>{{ end }}
+        </div>
+    </span>
+</div>

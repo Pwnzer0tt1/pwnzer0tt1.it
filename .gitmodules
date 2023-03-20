@@ -1,0 +1,6 @@
+[submodule "themes/compost"]
+	path = themes/compost
+	url = https://github.com/canstand/compost
+[submodule "themes/paper"]
+	path = themes/paper
+	url = https://github.com/nanxiaobei/hugo-paper
