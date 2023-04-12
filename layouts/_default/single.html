@@ -16,6 +16,7 @@
       {{ if .Date }}
       <time>{{ .Date | time.Format ":date_medium" }}</time>
       {{ end }}<!---->
+      
       {{ $single_author := or .Params.Author site.Author.name }}
       <!---->
       {{ if $single_author }}
@@ -29,6 +30,7 @@
   {{ if ne .Type "page" }}
   <main data-pagefind-body>
   {{ end }}
+  <p style="display:none;">{{ .Title }} {{ .Params.Author }} </p>
   <section>{{ .Content }}</section>
   {{ if ne .Type "page" }}
   </main>
