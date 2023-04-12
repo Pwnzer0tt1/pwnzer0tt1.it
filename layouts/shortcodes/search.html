@@ -17,6 +17,10 @@
         transition-timing-function: cubic-bezier(0, 0, .2, 1);
         transition-duration: 200ms;
     }
+    
+    .pagefind-ui__search-clear {
+        display: none;
+    }
 </style>
 <div id="search"></div>
 <script>
@@ -43,7 +47,13 @@
     }
     window.addEventListener('DOMContentLoaded', (event) => {
         new PagefindUI({
-            element: "#search"
+            element: "#search",
+            processResult: function (result) {
+                if (result.meta.image == "imgs/main-page.png"){
+                    result.meta.image = "/icon.png"
+                };
+                return result;
+            }
         });
         start_search_referesh()
     })

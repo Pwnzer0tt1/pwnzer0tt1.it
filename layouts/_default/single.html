@@ -2,7 +2,14 @@
 
 <article>
   <header>
+    
+    {{ if ne .Type "page" }}
+    <main data-pagefind-body>
+    {{ end }}
     <h1 class="!my-0 pb-2.5">{{ .Title }}</h1>
+    {{ if ne .Type "page" }}
+    </main>
+    {{ end }}
 
     {{ if ne .Type "page" }}
     <div class="text-sm opacity-60">
@@ -22,7 +29,6 @@
   {{ if ne .Type "page" }}
   <main data-pagefind-body>
   {{ end }}
-
   <section>{{ .Content }}</section>
   {{ if ne .Type "page" }}
   </main>
