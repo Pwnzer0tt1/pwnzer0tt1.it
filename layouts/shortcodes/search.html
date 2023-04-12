@@ -1,0 +1,52 @@
+<link href="/_pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/_pagefind/pagefind-ui.js" type="text/javascript"></script>
+<style>
+    body {
+        --pagefind-ui-background: #eee !important;
+    }
+
+    .dark body {
+        --pagefind-ui-primary: #eeeeee !important;
+        --pagefind-ui-text: #eeeeee !important;
+        --pagefind-ui-background: #272727 !important;
+        --pagefind-ui-border: #272727 !important;
+        --pagefind-ui-tag: #152028 !important;
+    }
+
+    .pagefind-ui__search-input {
+        transition-timing-function: cubic-bezier(0, 0, .2, 1);
+        transition-duration: 200ms;
+    }
+</style>
+<div id="search"></div>
+<script>
+    let hidden_posts = false;
+    function start_search_referesh() {
+        let search = document.getElementsByClassName("pagefind-ui__search-input")[0];
+        search.addEventListener("input", (event) => {
+            if (event.target.value != "") {
+                if (hidden_posts) return
+                let posts = document.getElementsByClassName("post-elements")
+                for (let i = 0; i < posts.length; i++) {
+                    posts[i].style.display = "none";
+                }
+                hidden_posts = true;
+            } else {
+                if (!hidden_posts) return
+                let posts = document.getElementsByClassName("post-elements")
+                for (let i = 0; i < posts.length; i++) {
+                    posts[i].style.display = "block";
+                }
+                hidden_posts = false;
+            }
+        });
+    }
+    window.addEventListener('DOMContentLoaded', (event) => {
+        new PagefindUI({
+            element: "#search"
+        });
+        start_search_referesh()
+    })
+
+</script>
+</br>

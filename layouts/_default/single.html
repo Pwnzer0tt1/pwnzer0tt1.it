@@ -19,8 +19,15 @@
     {{ end }}
   </header>
 
-  <section>{{ .Content }}</section>
+  {{ if ne .Type "page" }}
+  <main data-pagefind-body>
+  {{ end }}
 
+  <section>{{ .Content }}</section>
+  {{ if ne .Type "page" }}
+  </main>
+  {{ end }}
+  
   <!-- Post Tags -->
   {{ if .Params.tags }}
   <footer class="mt-12 flex flex-wrap">
