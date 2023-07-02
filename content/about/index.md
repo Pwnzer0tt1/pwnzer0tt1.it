@@ -17,7 +17,7 @@ Our team was born during the national competition of [CyberChallenge](https://cy
 
 Here you can find some information about the participants of the team:
 {{< cardbox >}}
-{{< card img="imgs/domysh.jpg" title="Domingo Dirutigliano" github="https://github.com/domysh" website="https://domysh.com" email="me@domysh.com">}}
+{{< card img="imgs/domysh.jpg" title="Domingo Dirutigliano" github="https://github.com/domysh" website="https://domy.sh" email="me@domy.sh">}}
 {{< card img="imgs/panic.jpg" title="Nicola Pace" github="https://github.com/nicolapace">}}
 {{< card img="imgs/nicolag.png" title="Nicola Guerrera" github="https://github.com/nik012003" website="https://catboy.it" >}}
 {{< card img="imgs/oscar.jpg" title="Oscar Urselli" github="https://github.com/oscar0urselli">}}
