@@ -8,7 +8,7 @@ Our team was born during the national competition of [CyberChallenge](https://cy
 
 ## Contacts:
 
-[info@pwnzer0tt1.it](mailto:info@pwnzer0tt1.it) - [CTFtime](https://ctftime.org/team/193903) -
+[pwnzer0tt1@poliba.it](mailto:pwnzer0tt1@poliba.it) - [CTFtime](https://ctftime.org/team/193903) -
 [Github](https://github.com/Pwnzer0tt1) - [Discord](https://discord.gg/79NNVJBK5Z) -
 [Linkedin](https://www.linkedin.com/company/pwnzer0tt1/) - [Instagram](https://instagram.com/pwnzer0tt1) -
 [Twitter](https://twitter.com/pwnzer0tt1)
