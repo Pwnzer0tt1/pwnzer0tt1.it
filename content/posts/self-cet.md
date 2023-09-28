@@ -90,7 +90,7 @@ I can't call one_gadgets because they don't start with `endbr64`, and i can't ca
 
 I wasn't able to find a way to spawn a shell or read the flag from here, so i tried to find ways to jump to main again, which i can't do directly because it doesn't start with `endbr64` (`_init()` does, but it checks if it's already been called once, and if so doesn't start main).
 
-What i ended up doing is calling `atexit()` to register `main()` as an exit handler, which means that before closing the program, `main()` will be called again, and i can perform a second stage of my attack, in which i can first call `gets()` to read "/bin/sh" into memory,but using a 32 bit sized address on a writable memory map, and then `system()` using this address.
+What i ended up doing is calling `atexit()` to register `main()` as an exit handler, which means that before closing the program, `main()` will be called again, and i can perform a second stage of my attack, in which i first call `gets()` to read "/bin/sh" into memory, and then `system()` using this address.
 
 
 Here's the final exploit:
