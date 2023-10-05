@@ -5,7 +5,7 @@ tags = ["pwn"]
 date = "2023-09-28"
 +++
 
-This challenge is a simple XOR encoder: it reads a key and a message, both 32 byte strings, XORs them together and prints the result.
+This challenge is a simple XOR encoder: it reads a key and a message, both 32-byte strings, XORs them together and prints the result.
 Example:
 ```
 [KEY] 888
@@ -13,7 +13,7 @@ Example:
 [OUT] VWH
 ```
 
-The key and the message are stored in a struct with some error handling features:
+The key and the message are stored in a struct with some error-handling features:
 ```c
 struct {
 	char key[32];
@@ -57,11 +57,11 @@ The control-flow check performed on `throw()` is implemented as a macro `CFI` th
 
 This is just a weird way to check that the first assembly instruction of `throw()` is `endbr64`, and crash the process if it isn't.
 
-By googling a bit i learned about CET (Control-Flow Enforcement Technology) and CFI (Control-Flow Integrity), which are security measures used to prevent control flow corruption techniques like ROP chains.
+By googling a bit I learned about CET (Control-Flow Enforcement Technology) and CFI (Control-Flow Integrity), which are security measures used to prevent control-flow corruption techniques like ROP chains.
 Put simply, if we mark the start of functions with `endbr64`, when performing a call on a function pointer (like  `throw()`) if we find that we're not jumping to an `endbr64`, we know we're performing an invalid jump, and that there has been an attempt to corrupt the control flow.
 These checks are performed by the CPU and only work if the CPU, the OS, libraries, and the program itself all support and use CET; this program implements a software CET instead.
 
-Looking at when the user input is actually read, we can see we have 2 buffer overflows:
+Looking at when the user input is read, we can see we have 2 buffer overflows:
 ```c
 int main() {
 	ctx_t ctx = { .error = NULL, .status = 0, .throw = err };
@@ -83,14 +83,14 @@ Since we can overwrite `throw()`, we have an arbitrary call with 2 controlled pa
 We can leak the libc by setting `error` to a GOT entry, but `err()` also calls `exit()`; we need some way to leak the libc without also crashing..
 We can achieve this via a partial overwrite, and by looking at `endbr64` occurrences near `err()`, i found `warn()`, which behaves like `printf()`.
 
-So with my first payload i'll set the status to a GOT entry (it's then passed as the first parameter to `throw()`), and overwrite the lower bytes of `throw()` to point to `warn()`.
+So with my first payload, I'll set the status to a GOT entry (it's then passed as the first parameter to `throw()`), and overwrite the lower bytes of `throw()` to point to `warn()`.
 
-Now `read_member()` is called again, and i can call any libc function i want.
-I can't call one_gadgets because they don't start with `endbr64`, and i can't call `system()` because the first parameter must be a pointer to "/bin/sh", but it's nowhere in the binary's memory, and since `status` is an int i can only pass a 4 byte number, and libc addresses are much bigger than that.
+Now `read_member()` is called again, and I can call any libc function I want.
+I can't call one_gadgets because they don't start with `endbr64`, and I can't call `system()` because the first parameter must be a pointer to "/bin/sh", but it's nowhere in the binary's memory, and since `status` is an int I can only pass a 4-byte number, and libc addresses are much bigger than that.
 
-I wasn't able to find a way to spawn a shell or read the flag from here, so i tried to find ways to jump to main again, which i can't do directly because it doesn't start with `endbr64` (`_init()` does, but it checks if it's already been called once, and if so doesn't start main).
+I wasn't able to find a way to spawn a shell or read the flag from here, so I tried to find ways to jump to main again, which I can't do directly because it doesn't start with `endbr64` (`_init()` does, but it checks if it's already been called once, and if so doesn't start main).
 
-What i ended up doing is calling `atexit()` to register `main()` as an exit handler, which means that before closing the program, `main()` will be called again, and i can perform a second stage of my attack, in which i first call `gets()` to read "/bin/sh" into memory, and then `system()` using this address.
+What I ended up doing is calling `atexit()` to register `main()` as an exit handler, which means that before closing the program, `main()` will be called again, and I can perform a second stage of my attack, in which I first call `gets()` to read "/bin/sh" into memory, and then `system()` using this address.
 
 
 Here's the final exploit:
