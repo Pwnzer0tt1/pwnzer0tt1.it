@@ -7,5 +7,7 @@ Academic CTF team of Poliba, Always ready to hack and eat panzerotti 🚩
 ## The official webpage of pwnzer0tt1 CTF team
 Visit the website at [https://pwnzer0tt1.it](https://pwnzer0tt1.it)
 
-## Future improvements on the website
-1. Projects Page
+## TODO Write projects
+1. ITASEC
+2. CVE
+3. Firegex
