@@ -61,9 +61,11 @@ Here you will find our writeups and our contact information in the <a class="lin
     {{ if $single_author }}
     <span>{{ $single_author }}</span>
     {{ end }}
-    -
-    {{ range (.Params.tags) }}
-      <a href='{{ printf "/tags/%s" . }}'>{{ . }}</a>
+    {{ if .Params.tags }}
+      -
+      {{ range (.Params.tags) }}
+        <a href='{{ printf "/tags/%s" . }}'>{{ . }}</a>
+      {{ end }}
     {{ end }}
   </div>
 </section>
