@@ -2,7 +2,6 @@
 title = "ITASEC2023 - HighSchools CTF Workshop"
 author = "Pwnzer0tt1 & M0NT3C4RL0"
 date = "2023-05-02"
-tags = ["CTF"]
 +++
 
 This was a competition organized for ITASEC2023, a conference about cybersecurity by the CINI, for italian high school students.
