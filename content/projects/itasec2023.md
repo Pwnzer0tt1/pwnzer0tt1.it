@@ -5,8 +5,6 @@ date = "2023-05-02"
 tags = ["CTF"]
 +++
 
-# ITASEC2023 - HighSchools CTF Workshop
-
 This was a competition organized for ITASEC2023, a conference about cybersecurity by the CINI, for italian high school students.
 Most of the content about this competition is in italian.
 
