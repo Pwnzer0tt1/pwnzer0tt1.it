@@ -2,6 +2,7 @@
 title = "Linux Day Bari 2023 CTF"
 author = "Pwnzer0tt1 & M0NT3C4RL0"
 date = "2023-05-02"
+tags = ["CTF"]
 +++
 
 # ITASEC2023 - HighSchools CTF Workshop
