@@ -2,7 +2,6 @@
 title = "Linux Day Bari 2023 CTF"
 author = "Nicola Guerrera, Domingo Dirutigliano, Nicola Pace"
 date = "2023-10-28"
-tags = ["CTF"]
 +++
 
 ![logo](imgs/logo.png)
