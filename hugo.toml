@@ -15,7 +15,7 @@ theme = 'paper'
   # header social icons
   twitter = 'https://twitter.com/pwnzer0tt1'
   github = 'https://github.com/pwnzer0tt1'
-  #instagram = 'https://instagram.com/pwnzer0tt1'
+  instagram = 'https://instagram.com/pwnzer0tt1'
   discord = 'https://discord.gg/NWyJydmRSg'
   # home page profile
   avatar = 'https://pwnzer0tt1.it/icon.png'
