@@ -33,9 +33,9 @@ theme = 'paper'
     url = "/"
     weight = 1
   [[menu.main]]
-    identifier = "posts"
+    identifier = "writeups"
     name = "Writeups"
-    url = "/posts/"
+    url = "/writeups/"
     weight = 2
   [[menu.main]]
     identifier = "projects"
