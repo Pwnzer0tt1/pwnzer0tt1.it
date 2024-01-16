@@ -1,7 +1,10 @@
 {{ define "main" }}
 
 <!-- Tag Title -->
-<h1>{{ .Title }}</h1>
+{{ if not $.IsHome }}<!---->
+  <h1>{{ .Title }}</h1>
+{{ end }}
+
 {{ .Content }}
 
 <!-- $pages -->
@@ -19,10 +22,10 @@
 
 {{ $avatar_url := $.Scratch.Get "avatar_url" }}<!---->
 {{ if or $avatar_url site.Params.name }}
-<div class="-mt-2 mb-20 flex items-center">
+<div class="-mt-2 mb-16 flex items-center">
   {{ if $avatar_url }}
   <div
-    class="mr-5 shrink-0 rounded-full border-[0.5px] border-black/10 bg-white/50 p-3 shadow-xl dark:bg-white/80"
+    class="mr-5 shrink-0 rounded-full border-[0.5px] border-black/10 bg-white/50 p-3 shadow-xl dark:bg-white/[15%]"
   >
     <img
       class="my-0 aspect-square w-16 rounded-full !bg-black/5 hover:animate-spin dark:!bg-black/80"
@@ -33,7 +36,7 @@
   {{ end }}<!---->
   {{ if site.Params.name }}
   <div>
-    <h1 class="my-2.5 text-3xl font-bold">{{ site.Params.name }}</h1>
+    <h1 class="mb-2 mt-3 text-[2rem] font-bold">{{ site.Params.name }}</h1>
     <div class="break-words">
       {{ site.Params.bio | default (print `A personal blog by `
       site.Params.name) }}
@@ -42,7 +45,7 @@
   {{ end }}
 </div>
 {{ end }}<!---->
-<hr style="margin-top: -30px">
+<hr>
 <h2>Hi there! We are Pwnzer0tt1!</h2>
 We are the CTF team of Polytechnic of Bari, Italy 🇮🇹.
 Our group is composed by students who like playing CTFs and are interested in the field of cybersecurity 💾.
@@ -73,7 +76,7 @@ Here you will find our writeups and our contact information in the <a class="lin
 
 <!-- Main Nav -->
 {{ if gt $paginator.TotalPages 1 }}
-<nav class="mt-24 flex">
+<nav class="mt-16 flex">
   {{ if $paginator.HasPrev }}
   <a class="btn" href="{{ $paginator.Prev.URL }}">← {{ i18n "prev_page" }}</a>
   {{ end }}<!---->

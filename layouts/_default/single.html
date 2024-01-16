@@ -12,7 +12,7 @@
     {{ end }}
 
     {{ if ne .Type "page" }}
-    <div class="text-sm opacity-60">
+    <div class="text-sm antialiased opacity-60">
       {{ if .Date }}
       <time>{{ .Date | time.Format ":date_medium" }}</time>
       {{ end }}<!---->
@@ -41,7 +41,7 @@
   <footer class="mt-12 flex flex-wrap">
     {{ range .Params.tags }} {{ $href := print (absURL "tags/") (urlize .) }}
     <a
-      class="mr-1.5 mb-1.5 rounded-lg bg-black/[3%] px-5 py-2 no-underline dark:bg-white/[8%]"
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
       href="{{ $href }}"
       >{{ . }}</a
     >
@@ -50,24 +50,26 @@
   {{ end }}
 
   <!-- Post Nav -->
+  {{ if not site.Params.disablePostNavigation }}<!---->
   {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}<!---->
   {{ if and (gt (len $pages) 1) (in $pages . ) }}
   <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
     {{ with $pages.Next . }}
     <a
-      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
       href="{{ .Permalink }}"
       ><span class="mr-1.5">←</span><span>{{ .Name }}</span></a
     >
     {{ end }}<!---->
     {{ with $pages.Prev . }}
     <a
-      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
       href="{{ .Permalink }}"
       ><span>{{ .Name }}</span><span class="ml-1.5">→</span></a
     >
     {{ end }}
   </nav>
+  {{ end }}<!---->
   {{ end }}
 
   <!-- Disqus -->
@@ -113,6 +115,31 @@
     })();
   </script>
   {{ end }}
+
+    <!-- mermaid -->
+  {{- partial "mermaid.html" . -}}
+
+  <!-- giscus comment -->
+  {{ if and site.Params.giscus.repo (not (eq .Params.comments false)) }}
+    <div class="giscus mt-24"></div>
+    <script src="https://giscus.app/client.js"
+          data-repo="{{ site.Params.giscus.repo }}"
+          data-repo-id="{{ site.Params.giscus.repoId }}"
+          data-category="{{ site.Params.giscus.category }}"
+          data-category-id="{{ site.Params.giscus.categoryId }}"
+          data-mapping="{{ site.Params.giscus.mapping | default (print `pathname`) }}"
+          data-strict="{{ site.Params.giscus.strict | default (print `1`) }}"
+          data-reactions-enabled="{{ site.Params.giscus.reactionsEnabled | default (print `0`) }}"
+          data-emit-metadata="{{ site.Params.giscus.emitMetadata | default (print `0`) }}"
+          data-input-position="{{ site.Params.giscus.inputPosition | default (print `top`) }}"
+          data-theme="{{ site.Params.giscus.theme | default (print `light`) }}"
+          data-lang="{{ site.Params.giscus.lang | default (print `en`) }}"
+          data-loading="{{ site.Params.giscus.loading | default (print `lazy`) }}"
+          crossorigin="anonymous"
+          async>
+    </script>
+  {{ end }}
+
 </article>
 
 {{ end }}
