@@ -1,6 +1,4 @@
-<img align="left" src="./static/favicon.png" width="130" height="130"/>
-
-# Pwnzer0tt1.it
+<h1><img align="left" src="./static/favicon.png" height="170"/><br />Pwnzer0tt1.it</h1>
 
 Academic CTF team of Poliba, Always ready to hack and eat panzerotti 🚩
 <br /><br />
