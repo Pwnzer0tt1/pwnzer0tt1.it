@@ -6,10 +6,7 @@ if [ -f "$FILE" ]; then
     exit 1
 fi
 
-# The Docker checks are removed to allow the script to run even if Docker isn't installed.
-# The original script would have exited here if Docker was not found or not running.
-
-# Use sudo if the user has permission issues with docker.
+# Use sudo if the user has permission issues with docker (will be used also if not installed).
 USE_SUDO=0
 docker ps > /dev/null 2>&1 || USE_SUDO=1
 
