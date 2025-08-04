@@ -2,16 +2,16 @@
 
 FILE=firegex.py
 if [ -f "$FILE" ]; then
-        echo "Cannot create '$FILE'... file already exists!"
-        exit 1
+    echo "Cannot create '$FILE'... file already exists!"
+    exit 1
 fi
 
-which docker > /dev/null 2>&1 || { echo "Install docker before running this command!"; exit 1; }
+# The Docker checks are removed to allow the script to run even if Docker isn't installed.
+# The original script would have exited here if Docker was not found or not running.
 
-docker ps 2>&1 | grep "daemon running" > /dev/null && { echo "Docker is not running! Please start docker daemon before use this command!"; exit 1; }
-
+# Use sudo if the user has permission issues with docker.
 USE_SUDO=0
-docker ps 2>&1 | grep "permission denied" > /dev/null && USE_SUDO=1
+docker ps > /dev/null 2>&1 || USE_SUDO=1
 
 curl -sLf https://raw.githubusercontent.com/Pwnzer0tt1/firegex/main/start.py > "$FILE"
 
