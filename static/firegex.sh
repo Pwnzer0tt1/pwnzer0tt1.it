@@ -10,7 +10,7 @@ fi
 USE_SUDO=0
 docker ps > /dev/null 2>&1 || USE_SUDO=1
 
-curl -sLf https://raw.githubusercontent.com/Pwnzer0tt1/firegex/main/start.py > "$FILE"
+curl -sLf https://raw.githubusercontent.com/Pwnzer0tt1/firegex/main/run.py > "$FILE"
 
 if [ "$USE_SUDO" -eq "1" ]; then
   exec sudo python3 "$FILE" "$@"
