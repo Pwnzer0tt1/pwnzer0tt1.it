@@ -13,7 +13,7 @@ docker ps 2>&1 | grep "daemon running" > /dev/null && { echo "Docker is not runn
 USE_SUDO=0
 docker ps 2>&1 | grep "permission denied" > /dev/null && USE_SUDO=1
 
-curl -sLf https://raw.githubusercontent.com/Pwnzer0tt1/exploitfarm/main/start.py > "$FILE"
+curl -sLf https://raw.githubusercontent.com/Pwnzer0tt1/exploitfarm/main/run.py > "$FILE"
 
 if [ "$USE_SUDO" -eq "1" ]; then
   exec sudo python3 "$FILE" "$@"
