@@ -1,4 +1,11 @@
 import { createTheme } from '@mui/material/styles';
+import { Roboto } from 'next/font/google';
+
+const roboto = Roboto({
+  weight: ['300', '400', '500', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 const theme = createTheme({
   palette: {
@@ -15,7 +22,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: roboto.style.fontFamily,
     h1: {
       fontWeight: 700,
       letterSpacing: '-0.02em',

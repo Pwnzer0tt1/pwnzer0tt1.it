@@ -44,7 +44,7 @@ export default function CyberChallenge() {
             >
               <Box
                 component="img"
-                src="https://cyberchallenge.it/media/public/press-kit/CCIT_Stemma.svg"
+                src="/CCIT_Stemma.svg"
                 alt="CyberChallenge Logo"
                 sx={{
                   width: '100%',
