@@ -29,8 +29,8 @@ export default function About() {
           Who we are
         </Typography>
         <Typography variant="h6" color="text.secondary" align="center" sx={{ mb: 8, maxWidth: 800, mx: 'auto' }}>
-          Pwnzer0tt1 is the official Academic Capture The Flag (CTF) team of Politecnico di Bari (Poliba). 
-          We are a group of cybersecurity enthusiasts and passionate students dedicated to offensive security and applied cryptography.
+          Pwnzer0tt1 is an Academic Capture The Flag (CTF) team of Politecnico di Bari (Poliba).
+          We are a group of cybersecurity enthusiasts and passionate students dedicated to offensive security and ethical hacking
         </Typography>
 
         <Grid container spacing={4}>
