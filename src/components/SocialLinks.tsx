@@ -1,3 +1,4 @@
+import React from 'react';
 import { Stack, IconButton, Tooltip } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -34,14 +35,16 @@ export default function SocialLinks({ sx, iconSize = 'large' }: { sx?: any; icon
             size={iconSize === 'large' ? 'large' : 'medium'}
             sx={{
               transition: 'transform 0.2s',
+              willChange: 'transform',
               '&:hover': {
-                transform: 'scale(1.2)',
+                transform: 'scale(1.15)',
                 color: 'primary.main',
               },
             }}
           >
-            {/* Clone element to inject fontSize if needed, though IconButton size prop usually handles it */}
-            {link.icon}
+            {React.cloneElement(link.icon as React.ReactElement, {
+              sx: { fontSize: iconSize === 'large' ? 36 : 24 }
+            })}
           </IconButton>
         </Tooltip>
       ))}

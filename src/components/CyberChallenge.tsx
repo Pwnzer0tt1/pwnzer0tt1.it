@@ -27,7 +27,7 @@ export default function CyberChallenge() {
               rel="noopener noreferrer"
               sx={{ borderRadius: '30px', px: 4, py: 1.5, fontWeight: 'bold' }}
             >
-              Poliba Node Official Page
+              Cyberchallenge - Poliba Page
             </Button>
           </Grid>
 
